@@ -1,0 +1,27 @@
+/* Outer spacing: keep calculator away from screen edges */
+.app-container {
+  margin: 60px auto;           /* was 30px; now 60px as requested */
+  max-width: 1200px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(30, 50, 70, 0.06);
+  border: 1px solid #e9edf3;   /* subtle outer border */
+}
+
+/* Slightly rounded, modern inputs */
+.modern-input {
+  border-radius: 6px;
+}
+
+/* Input group with small suffix (m/h) */
+.modern-input-group .input-group-text {
+  border-radius: 0 6px 6px 0;
+  padding-inline: 8px;
+}
+
+/* Read-only boxes look slightly muted but still clearly inputs */
+.ro-input[readonly] {
+  background-color: #f7f9fc;
+  color: #495057;
+}

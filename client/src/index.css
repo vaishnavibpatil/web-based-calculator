@@ -1,0 +1,227 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+/* -------------------------
+   Layout container & card
+   ------------------------- */
+.app {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 18px;
+  color: var(--text-color, #111827);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* card wrapper for whole calculator */
+.card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--card-border, #e6e9ee);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 1px 3px rgba(16,24,40,0.04);
+}
+
+/* keep header visually consistent */
+.app h1 {
+  margin: 6px 0 16px;
+  font-weight: 600;
+  color: inherit;
+}
+
+/* -------------------------
+   Controls (top row)
+   ------------------------- */
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.controls .field { display:flex; flex-direction:column; gap:6px; }
+.controls label { font-size: 14px; font-weight:600; color: #6b7280; }
+.controls input[type="number"],
+.controls input[type="text"] {
+  width: 160px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  font-size: 14px;
+  background: #fff;
+}
+
+/* primary button look (overrides your button base) */
+.btn-primary {
+  background: #2b6cf6;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight:600;
+  border: none;
+  cursor: pointer;
+}
+
+/* right aligned 'Add project' area */
+.controls .actions-right { margin-left: auto; }
+
+/* -------------------------
+   Projects table (card rows)
+   ------------------------- */
+.projects-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 14px; /* vertical gap between rows */
+  margin-top: 12px;
+}
+
+/* hide default table headers on mobile (we'll keep them on desktop) */
+.projects-table thead th {
+  text-align: left;
+  font-weight:700;
+  padding: 8px 12px;
+  color: #111827;
+}
+
+/* each logical row will look like a card */
+.projects-table tbody tr {
+  background: #fff;
+  border: 1px solid #e6e9ee;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.02);
+}
+
+/* let td fill the card correctly so corners aren't clipped */
+.projects-table tbody td {
+  padding: 16px;
+  border: 0;
+  display: block;
+}
+
+/* inside each row we'll use a grid for predictable columns */
+.row-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr 180px 120px; /* project | details | savings | actions */
+  gap: 12px;
+  align-items: center;
+}
+
+/* project name and meta */
+.project-name { font-weight:700; font-size:16px; margin-bottom:6px; }
+.small-muted { color:#6b7280; font-size:13px; font-weight:500; }
+
+/* input width for counts */
+.count-input input {
+  width: 110px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+}
+
+/* numeric columns align right for readability */
+.numeric { text-align: right; font-weight:600; }
+
+/* actions area */
+.actions { display:flex; gap:8px; justify-self:end; align-items:center; }
+.btn-danger {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #b91c1c;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* totals row */
+.totals-row td { padding: 12px; display:block; }
+.totals-inner {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight:700;
+  display:inline-block;
+}
+
+/* -------------------------
+   accessibility helper (hide id but keep accessible)
+   ------------------------- */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden; clip: rect(1px,1px,1px,1px);
+  white-space: nowrap; border:0; padding:0; margin:-1px;
+}
+
+/* -------------------------
+   Responsive: stack on small screens
+   ------------------------- */
+@media (max-width: 880px) {
+  .row-grid { grid-template-columns: 1fr; gap:8px; }
+  .actions { justify-self: start; }
+  .projects-table thead { display: none; } /* hide headers on small screens */
+  .projects-table tbody td { padding: 12px; }
+}
